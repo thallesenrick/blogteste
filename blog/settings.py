@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%jrx4-wn7n2*z&8brp=2-tq^$t76=86)w#j=w$ifo&d^)^#*2t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['blogcursopython.otaviomiranda.com.br']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -83,8 +84,8 @@ DATABASES = {
         'NAME': 'blog_django',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'USER': 'cursopython',
-        'PASSWORD': 'curs0Pyth0n@169',
+        'USER': 'root',
+        'PASSWORD': '',
     }
 }
 
@@ -132,8 +133,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-from django.contrib.messages import constants
-
 MESSAGE_TAGS = {
     constants.ERROR: 'alert-danger',
     constants.WARNING: 'alert-warning',
@@ -144,15 +143,4 @@ MESSAGE_TAGS = {
 
 INSTALLED_APPS += ('django_summernote',)
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-try:
-    from .local_settings import *
-except:
-    pass
-
-
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
